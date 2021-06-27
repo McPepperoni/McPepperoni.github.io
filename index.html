@@ -6,6 +6,8 @@
 	<script src="https://ghcdn.rawgit.org/stemkoski/AR-Examples/master/js/OBJLoader.js"></script>
 	<script src="https://ghcdn.rawgit.org/stemkoski/AR-Examples/master/js/MTLLoader.js"></script>
 
+	<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.module.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js"></script>
 </head>
 
@@ -125,8 +127,20 @@ function initialize()
 				.load( name + ".obj", function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
-					mesh0.position.y = -0.25;
+
 					mesh0.scale.set(0.25,0.25,0.25);
+
+					var boundingBox = new THREE.Box3().setFromObject(mesh0);
+					var center = new THREE.Vector3();
+					var size = new THREE.Vector3();
+
+					boundingBox.getCenter(center);
+					boundingBox.getSize(size);
+
+					mesh0.translateX(-center.x);
+					mesh0.translateY(-center.y + size.y / 2);
+					mesh0.translateZ(-center.z);
+					
 					markerRoot1.add(mesh0);
 				}, onProgress, onError );
 		});
