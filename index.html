@@ -98,11 +98,11 @@ function initialize()
 	////////////////////////////////////////////////////////////
 
 	// build markerControls
-	markerRoot1 = new THREE.Group();
-	scene.add(markerRoot1);
-	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type: 'pattern', patternUrl: "pattern-marker.patt",
-	})
+	// markerRoot1 = new THREE.Group();
+	// scene.add(markerRoot1);
+	// let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
+	// 	type: 'pattern', patternUrl: "pattern-marker.patt",
+	// })
 
 	// let geometry1 = new THREE.PlaneBufferGeometry(1,1, 4,4);
 	// let loader = new THREE.TextureLoader();
@@ -114,17 +114,26 @@ function initialize()
 	
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
-	
-	var name = "cat";
 
-	new THREE.MTLLoader()
+	let name = ["cat"]
+	let patternArray = ["pattern-marker"];
+	//let colorArray   = [0xff0000, 0xff8800, 0xffff00, 0x00cc00, 0x0000ff, 0xcc00ff, 0xcccccc];
+	for (let i = 0; i < name.length; i++)
+	{
+		let markerRoot = new THREE.Group();
+		scene.add(markerRoot);
+		let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+			type : 'pattern', patternUrl : patternArray[i] + ".patt",
+		});
+
+		new THREE.MTLLoader()
 		.setPath( "/model/" + name + "/")
-		.load( name + ".mtl", function ( materials ) {
+		.load( name[i] + ".mtl", function ( materials ) {
 			materials.preload();
 			new THREE.OBJLoader()
 				.setMaterials( materials )
 				.setPath( "/model/" + name + "/")
-				.load( name + ".obj", function ( group ) {
+				.load( name[i] + ".obj", function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
 
@@ -141,11 +150,11 @@ function initialize()
 					mesh0.translateY(-center.y + size.y / 2);
 					mesh0.translateZ(-center.z);
 					
-					markerRoot1.add(mesh0);
+					markerRoot.add(mesh0);
 				}, onProgress, onError );
 		});
+	}
 }
-
 
 function update()
 {
