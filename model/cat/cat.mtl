@@ -1,0 +1,21 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl cat2
+Ka 0.000000 0.000000 0.000000
+Kd 0.368627 0.356863 0.337255
+Ks 0.330000 0.330000 0.330000
+map_Kd cat/cat2.jpg
+
+newmtl M_2_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.862745 0.862745 0.862745
+Ks 0.330000 0.330000 0.330000
+
+newmtl Pillow1
+Ka 0.000000 0.000000 0.000000
+Kd 0.282353 0.333333 0.356863
+Ks 0.330000 0.330000 0.330000
+map_Kd cat/Pillow1.jpg
+
