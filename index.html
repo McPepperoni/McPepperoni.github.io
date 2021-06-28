@@ -115,13 +115,8 @@ function initialize()
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
 
-<<<<<<< HEAD
-	let name = ["cat"]
-	let patternArray = ["pattern-marker"];
-=======
 	let name = ["cat", "fish"];
-	let patternArray = ["pattern-marker", "pattern-arj"];
->>>>>>> 6e617b6d65c99d25fd386c1ff71869889ddbb577
+	let patternArray = ["pattern-marker", "pattern-arjs"];
 	//let colorArray   = [0xff0000, 0xff8800, 0xffff00, 0x00cc00, 0x0000ff, 0xcc00ff, 0xcccccc];
 	for (let i = 0; i < name.length; i++)
 	{
@@ -132,20 +127,12 @@ function initialize()
 		});
 
 		new THREE.MTLLoader()
-<<<<<<< HEAD
-		.setPath( "/model/" + name + "/")
-=======
 		.setPath( "/model/" + name[i] + "/")
->>>>>>> 6e617b6d65c99d25fd386c1ff71869889ddbb577
 		.load( name[i] + ".mtl", function ( materials ) {
 			materials.preload();
 			new THREE.OBJLoader()
 				.setMaterials( materials )
-<<<<<<< HEAD
-				.setPath( "/model/" + name + "/")
-=======
 				.setPath( "/model/" + name[i] + "/")
->>>>>>> 6e617b6d65c99d25fd386c1ff71869889ddbb577
 				.load( name[i] + ".obj", function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
