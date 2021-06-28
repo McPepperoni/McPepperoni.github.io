@@ -127,12 +127,12 @@ function initialize()
 		});
 
 		new THREE.MTLLoader()
-		.setPath( "/model/" + name + "/")
+		.setPath( "/model/" + name[i] + "/")
 		.load( name[i] + ".mtl", function ( materials ) {
 			materials.preload();
 			new THREE.OBJLoader()
 				.setMaterials( materials )
-				.setPath( "/model/" + name + "/")
+				.setPath( "/model/" + name[i] + "/")
 				.load( name[i] + ".obj", function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
