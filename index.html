@@ -115,7 +115,7 @@ function initialize()
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
 
-	var scale = [0.25, 0.25, 5];
+	var scale = [0.25, 0.25, 12];
 	
 	let name = ["cat", "fish", "speaker"];
 	let patternArray = ["pattern-arjs", "pattern-marker", "pattern-letterA"];
@@ -138,7 +138,7 @@ function initialize()
 				.load( name[i] + ".obj", function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
-
+					
 					mesh0.scale.set(scale[i], scale[i], scale[i]);
 
 					var boundingBox = new THREE.Box3().setFromObject(mesh0);
