@@ -115,10 +115,10 @@ function initialize()
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
 
-	var scale = [0.25, 0.25, 12];
+	var scale = [0.25, 0.25, 12, 5];
 	
-	let name = ["cat", "fish", "speaker"];
-	let patternArray = ["pattern-arjs", "pattern-marker", "pattern-letterA"];
+	let name = ["cat", "fish", "speaker", "tableSet"];
+	let patternArray = ["pattern-arjs", "pattern-marker", "pattern-letterA", "patternHiro"];
 	//let colorArray   = [0xff0000, 0xff8800, 0xffff00, 0x00cc00, 0x0000ff, 0xcc00ff, 0xcccccc];
 	for (let i = 0; i < name.length; i++)
 	{
