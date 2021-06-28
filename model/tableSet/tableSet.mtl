@@ -3,7 +3,7 @@
 newmtl Mat
 Ka 1 1 1
 Kd 0.80000001192093 0.80000001192093 0.80000001192093
-map_Kd PatioWood/PatioWood_Base_Color.png
+map_Kd PattioWood/PatioWood_Base_Color.png
 Ks 1 1 1
 Ns 50
 illum 7
