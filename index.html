@@ -116,6 +116,9 @@ function initialize()
 	function onError(xhr) { console.log( 'An error happened' ); }
 
 	var scale = [0.25, 0.25, 12, 0.025];
+
+	renderer.shadowMap.enabled = true;
+	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 	
 	let name = ["cat", "fish", "speaker", "tableSet"];
 	let patternArray = ["pattern-arjs", "pattern-marker", "pattern-letterA", "pattern-hiro"];
@@ -151,7 +154,35 @@ function initialize()
 					mesh0.translateX(-center.x);
 					mesh0.translateY(-center.y + size.y / 2);
 					mesh0.translateZ(-center.z);
+
+					mesh0.castShadow = true;
+					mesh0.receiveShadow = true;
+
+					let floorGeometry = new THREE.PlaneGeometry( 20,20 );
+					let floorMaterial = new THREE.ShadowMaterial();
+					floorMaterial.opacity = 0.3;
+					let floorMesh = new THREE.Mesh( floorGeometry, floorMaterial );
+					floorMesh.rotation.x = -Math.PI/2;
+					floorMesh.receiveShadow = true;
+					markerRoot.add( floorMesh );
+
 					
+					let light = new THREE.PointLight( 0xffffff, 1, 100 );
+					light.position.set( 0,4,0 ); // default; light shining from top
+					light.castShadow = true;
+					markerRoot.add( light );
+					
+					let lightSphere = new THREE.Mesh(
+						new THREE.SphereGeometry(0.1),
+						new THREE.MeshBasicMaterial({
+							color: 0xffffff,
+							transparent: true,
+							opacity: 0.8
+						})
+					);
+					lightSphere.position.copy( light.position );
+					markerRoot.add( lightSphere );
+
 					markerRoot.add(mesh0);
 				}, onProgress, onError );
 		});
