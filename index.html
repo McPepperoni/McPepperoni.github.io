@@ -30,7 +30,7 @@ function initialize()
 {
 	scene = new THREE.Scene();
 
-	let ambientLight = new THREE.AmbientLight( 0xcccccc, 2.0 );
+	let ambientLight = new THREE.AmbientLight( 0xcccccc, 1.0 );
 	scene.add( ambientLight );
 				
 	camera = new THREE.Camera();
@@ -100,21 +100,6 @@ function initialize()
 	////////////////////////////////////////////////////////////
 	// setup markerRoots
 	////////////////////////////////////////////////////////////
-
-	// build markerControls
-	// markerRoot1 = new THREE.Group();
-	// scene.add(markerRoot1);
-	// let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-	// 	type: 'pattern', patternUrl: "pattern-marker.patt",
-	// })
-
-	// let geometry1 = new THREE.PlaneBufferGeometry(1,1, 4,4);
-	// let loader = new THREE.TextureLoader();
-	// // let texture = loader.load( 'images/earth.jpg', render );
-	// let material1 = new THREE.MeshBasicMaterial( { color: 0x0000ff, opacity: 0.5 } );
-	// mesh1 = new THREE.Mesh( geometry1, material1 );
-	// mesh1.rotation.x = -Math.PI/2;
-	// markerRoot1.add( mesh1 );
 	
 	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
 	function onError(xhr) { console.log( 'An error happened' ); }
@@ -126,7 +111,7 @@ function initialize()
 	
 	let name = ["cat", "fish", "speaker", "tableSet"];
 	let patternArray = ["pattern-arjs", "pattern-marker", "pattern-letterA", "pattern-hiro"];
-	//let colorArray   = [0xff0000, 0xff8800, 0xffff00, 0x00cc00, 0x0000ff, 0xcc00ff, 0xcccccc];
+
 	for (let i = 0; i < name.length; i++)
 	{
 		let markerRoot = new THREE.Group();
@@ -158,6 +143,9 @@ function initialize()
 					mesh0.translateX(-center.x);
 					mesh0.translateY(-center.y + size.y / 2);
 					mesh0.translateZ(-center.z);
+
+					var axis = THREE.AxisHelper(5);
+					markerRoot.add(axis);
 
 					mesh0.castShadow = true;
 					mesh0.receiveShadow = true;
