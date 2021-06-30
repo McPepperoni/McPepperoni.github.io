@@ -1,4 +1,4 @@
-# Blender MTL File: 'sPEAKER.blend'
+# Blender MTL File: 'None'
 # Material Count: 5
 
 newmtl Belt
@@ -10,15 +10,14 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump rusty_metal_02_4k_jpg/rusty_metal_02_nor_4k.jpg
-map_Ks rusty_metal_02_4k_jpg/rusty_metal_02_spec_4k.jpg
-map_Ns rusty_metal_02_4k_jpg/rusty_metal_02_rough_4k.jpg
-refl rusty_metal_02_4k_jpg/rusty_metal_02_rough_4k.jpg
+map_Bump rusty_metal_02_4k_jpg\\rusty_metal_02_nor_4k.jpg
+map_Kd rusty_metal_02_4k_jpg\\rusty_metal_02_rough_4k.jpg
+map_Ks rusty_metal_02_4k_jpg\\rusty_metal_02_spec_4k.jpg
 
 newmtl Material.001
 Ns 225.000000
 Ka 1.000000 1.000000 1.000000
-Kd 0.041318 0.041318 0.041318
+Kd 0.343418 0.217597 0.597864
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
@@ -44,8 +43,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump leather_red_02_4k_png/leather_red_02_nor_4k.png
-map_Ns leather_red_02_4k_png/leather_red_02_rough_4k.png
+map_Bump leather_red_02_4k_png\\leather_red_02_nor_4k.png
+map_Kd leather_red_02_4k_png\\leather_red_02_diff_4k.png
 
 newmtl plastic
 Ns 225.000000
