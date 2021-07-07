@@ -23,11 +23,11 @@ var markerRoot1;
 
 var mesh1;
 
-let name = ["cat", "fish", "speaker", "plchair"];
+let name = ["cat", "plchair"];
 let patternArray = ["pattern-arjs", "pattern-marker", "pattern-letterA", "pattern-hiro"];
-let scale = [0.25, 0.25, 4, 2];
+let scale = [0.25, 2];
 
-let markerSize = 2.5;
+let markerSize = 1;
 
 initialize();
 animate();
@@ -56,10 +56,6 @@ function initialize()
 	clock = new THREE.Clock();
 	deltaTime = 0;
 	totalTime = 0;
-	
-	////////////////////////////////////////////////////////////
-	// setup arToolkitSource
-	////////////////////////////////////////////////////////////
 
 	arToolkitSource = new THREEx.ArToolkitSource({
 		sourceType : 'webcam',
@@ -87,10 +83,6 @@ function initialize()
 	window.addEventListener('resize', function(){
 		onResize()
 	});
-	
-	////////////////////////////////////////////////////////////
-	// setup arToolkitContext
-	////////////////////////////////////////////////////////////	
 
 	// create atToolkitContext
 	arToolkitContext = new THREEx.ArToolkitContext({
@@ -103,16 +95,30 @@ function initialize()
 		camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
 	});
 
-	////////////////////////////////////////////////////////////
-	// setup markerRoots
-	////////////////////////////////////////////////////////////
-	
-	function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
-	function onError(xhr) { console.log( 'An error happened' ); }
-
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
+	modelGet();
+	//getAxis();
+}
+
+function onProgress(xhr) { console.log( (xhr.loaded / xhr.total * 100) + '% loaded' ); }
+function onError(xhr) { console.log( 'An error happened' ); }
+
+function getAxis()
+{
+	let markerRoot = new THREE.Group();
+	scene.add(markerRoot);
+	let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+		size : markerSize ,type : 'pattern', patternUrl : "/pattern-patt/" + patternArray[0] + ".patt",
+	});
+
+	var axis = new THREE.AxisHelper(3);
+	markerRoot.add(axis);
+}
+
+function modelGet()
+{
 	for (let i = 0; i < name.length; i++)
 	{
 		let markerRoot = new THREE.Group();
